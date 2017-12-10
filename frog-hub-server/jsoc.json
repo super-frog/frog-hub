@@ -1,0 +1,97 @@
+{
+  "host": "",
+  "projectRoot": "/Users/lanhao/src/frog/frog-hub/frog-hub-server",
+  "definitions": {
+    "error.COMMON_ERROR": {
+      "code": 1001500001,
+      "message": "[COMMON_ERROR]通用错误: ",
+      "data": null
+    },
+    "error.INTERNAL_ERROR": {
+      "code": -1,
+      "message": "[INTERNAL_ERROR]Internal Error: ",
+      "data": null
+    },
+    "error.BAD_REQUEST": {
+      "code": -2,
+      "message": "[BAD_REQUEST]入参检测错误: ",
+      "data": null
+    },
+    "error.NOT_FOUND": {
+      "code": -3,
+      "message": "[NOT_FOUND]not found: ",
+      "data": null
+    }
+  },
+  "apis": {
+    "getProject": {
+      "name": "getProject",
+      "desc": "getProject",
+      "group": "",
+      "request": {
+        "method": "get",
+        "uri": "/{project}",
+        "query": {},
+        "params": {
+          "project": {
+            "_type": "string",
+            "_default": "",
+            "_desc": "项目标识符 ",
+            "_length": [
+              1,
+              20
+            ]
+          }
+        },
+        "body": {}
+      },
+      "response": {
+        "body": {
+          "success": [],
+          "failed": []
+        }
+      }
+    },
+    "register": {
+      "name": "register",
+      "desc": "register",
+      "group": "",
+      "request": {
+        "method": "post",
+        "uri": "/register",
+        "query": {},
+        "params": {},
+        "body": {
+          "project": {
+            "_type": "string",
+            "_default": "",
+            "_desc": "项目标识符 ",
+            "_length": [
+              1,
+              64
+            ]
+          }
+        }
+      },
+      "response": {
+        "body": {
+          "success": [
+            {
+              "code": {
+                "_type": "number",
+                "_assert": 0
+              },
+              "data": {
+                "_type": "boolean"
+              },
+              "message": {
+                "_type": "string"
+              }
+            }
+          ],
+          "failed": []
+        }
+      }
+    }
+  }
+}

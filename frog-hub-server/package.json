@@ -1,0 +1,17 @@
+{
+  "name": "frog-hub-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "frog build && exit 0",
+    "dev": "frog build && node server.js",
+    "touch": "frog touch && exit 0"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "xiaolan": "^1.5.19"
+  }
+}
