@@ -26,11 +26,11 @@
   "apis": {
     "getProject": {
       "name": "getProject",
-      "desc": "getProject",
+      "desc": "加载项目信息",
       "group": "",
       "request": {
         "method": "get",
-        "uri": "/{project}",
+        "path": "/",
         "query": {},
         "params": {
           "project": {
@@ -47,18 +47,42 @@
       },
       "response": {
         "body": {
-          "success": [],
+          "success": [
+            {
+              "code": {
+                "_type": "number",
+                "_assert": 0
+              },
+              "data": {
+                "id": {
+                  "_type": "number"
+                },
+                "name": {
+                  "_type": "string"
+                },
+                "updateTime": {
+                  "_type": "number"
+                },
+                "prefix": {
+                  "_type": "number"
+                }
+              },
+              "message": {
+                "_type": "string"
+              }
+            }
+          ],
           "failed": []
         }
       }
     },
     "register": {
       "name": "register",
-      "desc": "register",
+      "desc": "服务注册入口",
       "group": "",
       "request": {
-        "method": "post",
-        "uri": "/register",
+        "method": "put",
+        "path": "/",
         "query": {},
         "params": {},
         "body": {

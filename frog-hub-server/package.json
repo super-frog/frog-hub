@@ -12,6 +12,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "xiaolan": "^1.5.19"
+    "xiaolan": "^1.6.0"
   }
 }

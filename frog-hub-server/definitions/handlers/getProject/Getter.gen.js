@@ -41,7 +41,11 @@ class Getter {
     switch (type){
       case 'string':
       case 'enum':
-        tmp = tmp.toString();
+        if(typeof tmp === 'object'){
+          tmp = JSON.stringify(tmp);
+        }else{
+          tmp = tmp.toString();
+        }
         break;
       case 'number':
         tmp = 1*tmp;

@@ -1,0 +1,8 @@
+{
+  "type": "node",
+  "name": "frog-hub-server",
+  "git": {
+    "remote": ""
+  },
+  "internal": true
+}

@@ -4,8 +4,8 @@ const Router = require('xiaolan-router');
 
 let router = new Router();
 
-router.get('/{project}', 'getProject');
+router.get('', 'getProject');
+router.put('','register')
 
-router.post('/register', 'register');
 
 module.exports = router.map();

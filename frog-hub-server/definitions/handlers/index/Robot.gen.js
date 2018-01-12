@@ -2,24 +2,21 @@
 
 
 
-class Reg {
+class Robot {
   constructor(options={}){
-    this.project = options.project;
+    this.name = options.name || 'Robot Xiaolan';
     this.validate();
   }
 
   static fromRequest(req){
     let options={};
-    if(!this.pick(req, 'body.project')){
-      throw new Error("Requirement : [project]");
-    }
-    options.project = this.pick(req, 'body.project', 'string', '');
-    return new Reg(options);
+    options.name = this.pick(req, 'query.name', 'string', 'Robot Xiaolan');
+    return new Robot(options);
   }
 
   validate(){
-    if(!((typeof this.project === 'string') && (this.project.length>=1) && (this.project.length<=64))){
-      throw new Error('type validate failed: [project]: String length must between 1 to 64');
+    if(!((typeof this.name === 'string') && (this.name.length>=0) && (this.name.length<=9007199254740991))){
+      throw new Error('type validate failed: [name]: String length must between 0 to 9007199254740991');
     }
 
   }
@@ -55,4 +52,4 @@ class Reg {
   }
 }
 
-module.exports = Reg;
+module.exports = Robot;
