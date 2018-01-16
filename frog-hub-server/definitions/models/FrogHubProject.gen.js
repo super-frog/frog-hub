@@ -7,6 +7,7 @@ class FrogHubProject {
   constructor(data={}){
     this.id = (data.id||data.id)||0;
     this.name = (data.name||data.project_name)||'foo';
+    this.status = (data.status||data.status)||1;
     this.updateTime = (data.updateTime||data.update_time)||0;
   }
 
@@ -23,6 +24,24 @@ class FrogHubProject {
           }else{
             resolved(null);
           }
+        }
+      });
+    });
+  }
+
+  static fetchByStatus(status, page=1, pageSize=10){
+    let sql = 'select * from frog_hub_project where status=:status order by id desc limit '+((page-1)*pageSize)+','+pageSize+'';
+    //@list
+    return new Promise((resolved, rejected) => {
+      Connection.query({sql:sql, params:{status: status}}, (e ,r)=>{
+        if(e){
+          rejected(e);
+        }else{
+          let result = [];
+          for(let k in r) {
+            result.push(new FrogHubProject(r[k]));
+          }
+          resolved(result);
         }
       });
     });
@@ -65,7 +84,7 @@ class FrogHubProject {
   }
 
   static fetchByAttr(data={}, page=1, pageSize=10){
-    let allowKey = ['id','update_time','project_name'];
+    let allowKey = ['id','status','update_time','project_name'];
     let sql = 'select * from frog_hub_project where 1 ';
     if(Object.keys(data).length===0){
       throw new Error('data param required');
@@ -137,6 +156,9 @@ class FrogHubProject {
   validate(){
     if(this.name !== null && !(typeof this.name==='string' && this.name.length>=0 && this.name.length<=64)){
       throw new Error('attribute name(project_name) must be a string length in [0,64]');
+    }
+    if(this.status !== null && !(typeof this.status==='number' && this.status>=0 && this.status<=255)){
+      throw new Error('attribute status(status) must be a number in [0,255]');
     }
     if(this.updateTime !== null && !(typeof this.updateTime==='number' && this.updateTime>=0 && this.updateTime<=18014398509481982)){
       throw new Error('attribute updateTime(update_time) must be a number in [0,18014398509481982]');
@@ -211,12 +233,14 @@ class FrogHubProject {
 const FieldMap = {
   id: 'id',
   project_name: 'name',
+  status: 'status',
   update_time: 'updateTime',
 };
 
 const KeyMap = {
   id: 'id',
   name: 'project_name',
+  status: 'status',
   updateTime: 'update_time',
 };
 

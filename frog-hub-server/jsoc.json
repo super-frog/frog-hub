@@ -24,13 +24,57 @@
     }
   },
   "apis": {
-    "getProject": {
-      "name": "getProject",
+    "project_list": {
+      "name": "project_list",
       "desc": "加载项目信息",
       "group": "",
       "request": {
         "method": "get",
         "path": "/",
+        "query": {},
+        "params": {},
+        "body": {}
+      },
+      "response": {
+        "body": {
+          "success": [
+            {
+              "code": {
+                "_type": "number",
+                "_assert": 0
+              },
+              "data": [
+                {
+                  "id": {
+                    "_type": "number"
+                  },
+                  "name": {
+                    "_type": "string"
+                  },
+                  "status": {
+                    "_type": "number"
+                  },
+                  "updateTime": {
+                    "_type": "number"
+                  }
+                }
+              ],
+              "message": {
+                "_type": "string"
+              }
+            }
+          ],
+          "failed": []
+        }
+      }
+    },
+    "get_project": {
+      "name": "get_project",
+      "desc": "加载项目信息",
+      "group": "",
+      "request": {
+        "method": "get",
+        "path": "/{project}",
         "query": {},
         "params": {
           "project": {
@@ -60,6 +104,9 @@
                 "name": {
                   "_type": "string"
                 },
+                "status": {
+                  "_type": "number"
+                },
                 "updateTime": {
                   "_type": "number"
                 },
@@ -76,8 +123,8 @@
         }
       }
     },
-    "register": {
-      "name": "register",
+    "register_service": {
+      "name": "register_service",
       "desc": "服务注册入口",
       "group": "",
       "request": {
