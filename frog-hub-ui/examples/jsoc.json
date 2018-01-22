@@ -1,0 +1,1112 @@
+{
+  "host": "",
+  "errors": {
+    "error.COMMON_ERROR": {
+      "code": 1001500001,
+      "message": "[COMMON_ERROR]通用错误: ",
+      "data": null
+    },
+    "error.NOT_ALLOW": {
+      "code": 1001403001,
+      "message": "[NOT_ALLOW]非法请求: ",
+      "data": null
+    },
+    "error.INTERNAL_ERROR": {
+      "code": -1,
+      "message": "[INTERNAL_ERROR]Internal Error: ",
+      "data": null
+    },
+    "error.BAD_REQUEST": {
+      "code": -2,
+      "message": "[BAD_REQUEST]入参检测错误: ",
+      "data": null
+    },
+    "error.NOT_FOUND": {
+      "code": -3,
+      "message": "[NOT_FOUND]not found: ",
+      "data": null
+    }
+  },
+  "apis": {
+    "auth": {
+      "name": "auth",
+      "desc": "算是[登录]",
+      "group": "",
+      "request": {
+        "method": "post",
+        "path": "/x/auth",
+        "query": {},
+        "params": {},
+        "body": {
+          "nickname": {
+            "_type": "string",
+            "_default": "",
+            "_desc": "昵称 ",
+            "_length": [
+              1,
+              32
+            ]
+          },
+          "avatar": {
+            "_type": "string",
+            "_default": "",
+            "_desc": "头像 ",
+            "_length": [
+              1,
+              255
+            ]
+          }
+        }
+      },
+      "response": {
+        "body": {
+          "success": [
+            {
+              "code": {
+                "_type": "number",
+                "_assert": 200
+              },
+              "data": {
+                "uid": {
+                  "_type": "number"
+                },
+                "token": {
+                  "_type": "string"
+                }
+              },
+              "message": {
+                "_type": "string"
+              }
+            }
+          ],
+          "failed": []
+        }
+      }
+    },
+    "create_event": {
+      "name": "create_event",
+      "desc": "创建事件",
+      "group": "",
+      "request": {
+        "method": "post",
+        "path": "/x/events",
+        "query": {},
+        "params": {},
+        "body": {
+          "type": {
+            "_type": "number",
+            "_default": 1,
+            "_desc": "分类 ",
+            "_range": [
+              1,
+              99
+            ]
+          },
+          "title": {
+            "_type": "string",
+            "_default": "",
+            "_desc": "标题 ",
+            "_length": [
+              1,
+              64
+            ]
+          },
+          "desc": {
+            "_type": "string",
+            "_default": "",
+            "_desc": "内容 ",
+            "_length": [
+              0,
+              1024
+            ]
+          },
+          "x": {
+            "_type": "number",
+            "_default": "",
+            "_desc": "X坐标 ",
+            "_range": [
+              -360,
+              360
+            ]
+          },
+          "y": {
+            "_type": "number",
+            "_default": "",
+            "_desc": "Y坐标 ",
+            "_range": [
+              -360,
+              360
+            ]
+          },
+          "file": {
+            "_type": "array",
+            "_default": [],
+            "_desc": "附件 "
+          }
+        },
+        "headers": {
+          "uid": {
+            "_type": "number",
+            "_default": "",
+            "_desc": "Uid ",
+            "_range": [
+              1,
+              65535
+            ]
+          },
+          "token": {
+            "_type": "string",
+            "_default": "",
+            "_desc": "token ",
+            "_length": [
+              1,
+              32
+            ]
+          }
+        }
+      },
+      "response": {
+        "body": {
+          "success": [
+            {
+              "code": {
+                "_type": "number",
+                "_assert": 200
+              },
+              "data": {
+                "id": {
+                  "_type": "number"
+                },
+                "uid": {
+                  "_type": "number"
+                },
+                "x": {
+                  "_type": "number"
+                },
+                "y": {
+                  "_type": "number"
+                },
+                "type": {
+                  "_type": "number"
+                },
+                "title": {
+                  "_type": "string"
+                },
+                "desc": {
+                  "_type": "string"
+                },
+                "status": {
+                  "_type": "number"
+                },
+                "createTime": {
+                  "_type": "number"
+                },
+                "updateTime": {
+                  "_type": "number"
+                }
+              },
+              "message": {
+                "_type": "string"
+              }
+            }
+          ],
+          "failed": []
+        }
+      }
+    },
+    "do_star": {
+      "name": "do_star",
+      "desc": "关注事件",
+      "group": "",
+      "request": {
+        "method": "post",
+        "path": "/x/{eventId}/star",
+        "query": {},
+        "params": {
+          "eventId": {
+            "_type": "number",
+            "_default": 1,
+            "_desc": "事件ID ",
+            "_range": [
+              1,
+              9999
+            ]
+          }
+        },
+        "body": {},
+        "headers": {
+          "uid": {
+            "_type": "number",
+            "_default": "",
+            "_desc": "Uid ",
+            "_range": [
+              1,
+              65535
+            ]
+          },
+          "token": {
+            "_type": "string",
+            "_default": "",
+            "_desc": "token ",
+            "_length": [
+              1,
+              32
+            ]
+          }
+        }
+      },
+      "response": {
+        "body": {
+          "success": [
+            {
+              "code": {
+                "_type": "number",
+                "_assert": 200
+              },
+              "data": {
+                "id": {
+                  "_type": "number"
+                },
+                "eventId": {
+                  "_type": "number"
+                },
+                "uid": {
+                  "_type": "number"
+                },
+                "createTime": {
+                  "_type": "number"
+                },
+                "updateTime": {
+                  "_type": "number"
+                }
+              },
+              "message": {
+                "_type": "string"
+              }
+            }
+          ],
+          "failed": []
+        }
+      }
+    },
+    "join_solution": {
+      "name": "join_solution",
+      "desc": "参与方案",
+      "group": "",
+      "request": {
+        "method": "post",
+        "path": "/x/{solutionId}/join",
+        "query": {},
+        "params": {},
+        "body": {},
+        "headers": {
+          "uid": {
+            "_type": "string",
+            "_default": "",
+            "_desc": "Uid ",
+            "_length": [
+              1,
+              32
+            ]
+          },
+          "token": {
+            "_type": "string",
+            "_default": "",
+            "_desc": "token ",
+            "_length": [
+              1,
+              32
+            ]
+          }
+        },
+        "param": {
+          "solutionId": {
+            "_type": "number",
+            "_default": 1,
+            "_desc": "方案ID ",
+            "_range": [
+              1,
+              99999
+            ]
+          }
+        }
+      },
+      "response": {
+        "body": {
+          "success": [
+            {
+              "code": {
+                "_type": "number",
+                "_assert": 200
+              },
+              "data": {},
+              "message": {
+                "_type": "string"
+              }
+            },
+            {
+              "code": {
+                "_type": "number",
+                "_assert": 200
+              },
+              "data": [
+                {
+                  "id": {
+                    "_type": "number"
+                  },
+                  "fid": {
+                    "_type": "number"
+                  },
+                  "uid": {
+                    "_type": "string"
+                  },
+                  "createTime": {
+                    "_type": "number"
+                  },
+                  "updateTime": {
+                    "_type": "number"
+                  }
+                }
+              ],
+              "message": {
+                "_type": "string"
+              }
+            }
+          ],
+          "failed": []
+        }
+      }
+    },
+    "offer_solution": {
+      "name": "offer_solution",
+      "desc": "提交方案",
+      "group": "",
+      "request": {
+        "method": "post",
+        "path": "/x/{eventId}/solution",
+        "query": {},
+        "params": {},
+        "body": {
+          "content": {
+            "_type": "string",
+            "_default": "",
+            "_desc": "方案详情 ",
+            "_length": [
+              0,
+              1024
+            ]
+          }
+        },
+        "headers": {
+          "uid": {
+            "_type": "string",
+            "_default": "",
+            "_desc": "Uid ",
+            "_length": [
+              1,
+              32
+            ]
+          },
+          "token": {
+            "_type": "string",
+            "_default": "",
+            "_desc": "token ",
+            "_length": [
+              1,
+              32
+            ]
+          }
+        },
+        "param": {
+          "eventId": {
+            "_type": "number",
+            "_default": 1,
+            "_desc": "事件ID ",
+            "_range": [
+              1,
+              9999
+            ]
+          }
+        }
+      },
+      "response": {
+        "body": {
+          "success": [
+            {
+              "code": {
+                "_type": "number",
+                "_assert": 200
+              },
+              "data": {
+                "id": {
+                  "_type": "number"
+                },
+                "eventId": {
+                  "_type": "number"
+                },
+                "content": {
+                  "_type": "string"
+                },
+                "uid": {
+                  "_type": "string"
+                },
+                "status": {
+                  "_type": "number"
+                },
+                "createTime": {
+                  "_type": "number"
+                },
+                "updateTime": {
+                  "_type": "number"
+                }
+              },
+              "message": {
+                "_type": "string"
+              }
+            }
+          ],
+          "failed": []
+        }
+      }
+    },
+    "get_near_by_events": {
+      "name": "get_near_by_events",
+      "desc": "附近的事件",
+      "group": "",
+      "request": {
+        "method": "get",
+        "path": "/x/events",
+        "query": {
+          "x": {
+            "_type": "number",
+            "_default": "",
+            "_desc": "X坐标 ",
+            "_range": [
+              -360,
+              360
+            ]
+          },
+          "y": {
+            "_type": "number",
+            "_default": "",
+            "_desc": "Y坐标 ",
+            "_range": [
+              -360,
+              360
+            ]
+          }
+        },
+        "params": {},
+        "body": {},
+        "headers": {
+          "uid": {
+            "_type": "string",
+            "_default": "",
+            "_desc": "Uid ",
+            "_length": [
+              1,
+              32
+            ]
+          },
+          "token": {
+            "_type": "string",
+            "_default": "",
+            "_desc": "token ",
+            "_length": [
+              1,
+              32
+            ]
+          }
+        }
+      },
+      "response": {
+        "body": {
+          "success": [
+            {
+              "code": {
+                "_type": "number",
+                "_assert": 200
+              },
+              "data": [
+                {
+                  "id": {
+                    "_type": "number"
+                  },
+                  "uid": {
+                    "_type": "number"
+                  },
+                  "x": {
+                    "_type": "number"
+                  },
+                  "y": {
+                    "_type": "number"
+                  },
+                  "type": {
+                    "_type": "number"
+                  },
+                  "title": {
+                    "_type": "string"
+                  },
+                  "desc": {
+                    "_type": "string"
+                  },
+                  "status": {
+                    "_type": "number"
+                  },
+                  "createTime": {
+                    "_type": "number"
+                  },
+                  "updateTime": {
+                    "_type": "number"
+                  }
+                }
+              ],
+              "message": {
+                "_type": "string"
+              }
+            }
+          ],
+          "failed": []
+        }
+      }
+    },
+    "get_all_events": {
+      "name": "get_all_events",
+      "desc": "附近的事件",
+      "group": "",
+      "request": {
+        "method": "get",
+        "path": "/x/all_events",
+        "query": {
+          "page": {
+            "_type": "number",
+            "_default": 1,
+            "_desc": "页码 ",
+            "_range": [
+              1,
+              99
+            ]
+          }
+        },
+        "params": {},
+        "body": {},
+        "headers": {
+          "uid": {
+            "_type": "string",
+            "_default": "",
+            "_desc": "Uid ",
+            "_length": [
+              1,
+              32
+            ]
+          },
+          "token": {
+            "_type": "string",
+            "_default": "",
+            "_desc": "token ",
+            "_length": [
+              1,
+              32
+            ]
+          }
+        }
+      },
+      "response": {
+        "body": {
+          "success": [
+            {
+              "code": {
+                "_type": "number",
+                "_assert": 200
+              },
+              "data": [
+                {
+                  "id": {
+                    "_type": "number"
+                  },
+                  "uid": {
+                    "_type": "number"
+                  },
+                  "x": {
+                    "_type": "number"
+                  },
+                  "y": {
+                    "_type": "number"
+                  },
+                  "type": {
+                    "_type": "number"
+                  },
+                  "title": {
+                    "_type": "string"
+                  },
+                  "desc": {
+                    "_type": "string"
+                  },
+                  "status": {
+                    "_type": "number"
+                  },
+                  "createTime": {
+                    "_type": "number"
+                  },
+                  "updateTime": {
+                    "_type": "number"
+                  }
+                }
+              ],
+              "message": {
+                "_type": "string"
+              }
+            }
+          ],
+          "failed": []
+        }
+      }
+    },
+    "event_detail": {
+      "name": "event_detail",
+      "desc": "事件细节",
+      "group": "",
+      "request": {
+        "method": "get",
+        "path": "/x/event/{eventId}",
+        "query": {},
+        "params": {
+          "eventId": {
+            "_type": "number",
+            "_default": 1,
+            "_desc": "事件ID ",
+            "_range": [
+              1,
+              99999
+            ]
+          }
+        },
+        "body": {},
+        "headers": {
+          "uid": {
+            "_type": "string",
+            "_default": "",
+            "_desc": "Uid ",
+            "_length": [
+              1,
+              32
+            ]
+          },
+          "token": {
+            "_type": "string",
+            "_default": "",
+            "_desc": "token ",
+            "_length": [
+              1,
+              32
+            ]
+          }
+        }
+      },
+      "response": {
+        "body": {
+          "success": [
+            {
+              "code": {
+                "_type": "number",
+                "_assert": 200
+              },
+              "data": {
+                "id": {
+                  "_type": "number"
+                },
+                "uid": {
+                  "_type": "number"
+                },
+                "x": {
+                  "_type": "number"
+                },
+                "y": {
+                  "_type": "number"
+                },
+                "type": {
+                  "_type": "number"
+                },
+                "title": {
+                  "_type": "string"
+                },
+                "desc": {
+                  "_type": "string"
+                },
+                "status": {
+                  "_type": "number"
+                },
+                "createTime": {
+                  "_type": "number"
+                },
+                "updateTime": {
+                  "_type": "number"
+                },
+                "files": {
+                  "_type": "number"
+                },
+                "stars": {
+                  "_type": "number"
+                },
+                "solutions": {
+                  "_type": "number"
+                }
+              },
+              "message": {
+                "_type": "string"
+              }
+            }
+          ],
+          "failed": []
+        }
+      }
+    },
+    "my_events": {
+      "name": "my_events",
+      "desc": "我的心愿",
+      "group": "",
+      "request": {
+        "method": "get",
+        "path": "/x/my/events",
+        "query": {
+          "page": {
+            "_type": "number",
+            "_default": 1,
+            "_desc": "页码 ",
+            "_range": [
+              1,
+              99
+            ]
+          }
+        },
+        "params": {},
+        "body": {},
+        "headers": {
+          "uid": {
+            "_type": "string",
+            "_default": "",
+            "_desc": "Uid ",
+            "_length": [
+              1,
+              32
+            ]
+          },
+          "token": {
+            "_type": "string",
+            "_default": "",
+            "_desc": "token ",
+            "_length": [
+              1,
+              32
+            ]
+          }
+        }
+      },
+      "response": {
+        "body": {
+          "success": [
+            {
+              "code": {
+                "_type": "number",
+                "_assert": 200
+              },
+              "data": [
+                {
+                  "id": {
+                    "_type": "number"
+                  },
+                  "uid": {
+                    "_type": "number"
+                  },
+                  "x": {
+                    "_type": "number"
+                  },
+                  "y": {
+                    "_type": "number"
+                  },
+                  "type": {
+                    "_type": "number"
+                  },
+                  "title": {
+                    "_type": "string"
+                  },
+                  "desc": {
+                    "_type": "string"
+                  },
+                  "status": {
+                    "_type": "number"
+                  },
+                  "createTime": {
+                    "_type": "number"
+                  },
+                  "updateTime": {
+                    "_type": "number"
+                  }
+                }
+              ],
+              "message": {
+                "_type": "string"
+              }
+            }
+          ],
+          "failed": []
+        }
+      }
+    },
+    "my_solution": {
+      "name": "my_solution",
+      "desc": "我的方案",
+      "group": "",
+      "request": {
+        "method": "get",
+        "path": "/x/my/solutions",
+        "query": {
+          "page": {
+            "_type": "number",
+            "_default": 1,
+            "_desc": "页码 ",
+            "_range": [
+              1,
+              99
+            ]
+          }
+        },
+        "params": {},
+        "body": {},
+        "headers": {
+          "uid": {
+            "_type": "string",
+            "_default": "",
+            "_desc": "Uid ",
+            "_length": [
+              1,
+              32
+            ]
+          },
+          "token": {
+            "_type": "string",
+            "_default": "",
+            "_desc": "token ",
+            "_length": [
+              1,
+              32
+            ]
+          }
+        }
+      },
+      "response": {
+        "body": {
+          "success": [
+            {
+              "code": {
+                "_type": "number",
+                "_assert": 200
+              },
+              "data": [
+                {
+                  "id": {
+                    "_type": "number"
+                  },
+                  "eventId": {
+                    "_type": "number"
+                  },
+                  "content": {
+                    "_type": "string"
+                  },
+                  "uid": {
+                    "_type": "string"
+                  },
+                  "status": {
+                    "_type": "number"
+                  },
+                  "createTime": {
+                    "_type": "number"
+                  },
+                  "updateTime": {
+                    "_type": "number"
+                  }
+                }
+              ],
+              "message": {
+                "_type": "string"
+              }
+            }
+          ],
+          "failed": []
+        }
+      }
+    },
+    "my_star": {
+      "name": "my_star",
+      "desc": "我关注的",
+      "group": "",
+      "request": {
+        "method": "get",
+        "path": "/x/my/star",
+        "query": {
+          "page": {
+            "_type": "number",
+            "_default": 1,
+            "_desc": "页码 ",
+            "_range": [
+              1,
+              99
+            ]
+          }
+        },
+        "params": {},
+        "body": {},
+        "headers": {
+          "uid": {
+            "_type": "string",
+            "_default": "xx",
+            "_desc": "Uid ",
+            "_length": [
+              1,
+              32
+            ]
+          },
+          "token": {
+            "_type": "string",
+            "_default": "xx",
+            "_desc": "token ",
+            "_length": [
+              1,
+              32
+            ]
+          }
+        }
+      },
+      "response": {
+        "body": {
+          "success": [
+            {
+              "code": {
+                "_type": "number",
+                "_assert": 200
+              },
+              "data": [
+                {
+                  "id": {
+                    "_type": "number"
+                  },
+                  "eventId": {
+                    "_type": "number"
+                  },
+                  "uid": {
+                    "_type": "number"
+                  },
+                  "createTime": {
+                    "_type": "number"
+                  },
+                  "updateTime": {
+                    "_type": "number"
+                  }
+                }
+              ],
+              "message": {
+                "_type": "string"
+              }
+            }
+          ],
+          "failed": []
+        }
+      }
+    },
+    "user_statistic": {
+      "name": "user_statistic",
+      "desc": "用户主页统计",
+      "group": "",
+      "request": {
+        "method": "get",
+        "path": "/x/userInfo",
+        "query": {},
+        "params": {},
+        "body": {},
+        "headers": {
+          "uid": {
+            "_type": "string",
+            "_default": "",
+            "_desc": "Uid ",
+            "_length": [
+              1,
+              32
+            ]
+          },
+          "token": {
+            "_type": "string",
+            "_default": "",
+            "_desc": "token ",
+            "_length": [
+              1,
+              32
+            ]
+          }
+        }
+      },
+      "response": {
+        "body": {
+          "success": [
+            {
+              "code": {
+                "_type": "number",
+                "_assert": 200
+              },
+              "data": {
+                "myEventNum": {
+                  "_type": "number"
+                },
+                "myStarNum": {
+                  "_type": "number"
+                },
+                "mySolutionNum": {
+                  "_type": "number"
+                },
+                "myJoinNum": {
+                  "_type": "number"
+                }
+              },
+              "message": {
+                "_type": "string"
+              }
+            }
+          ],
+          "failed": []
+        }
+      }
+    },
+    "stat": {
+      "name": "stat",
+      "desc": "全站统计",
+      "group": "",
+      "request": {
+        "method": "get",
+        "path": "/x/stat",
+        "query": {},
+        "params": {},
+        "body": {}
+      },
+      "response": {
+        "body": {
+          "success": [
+            {
+              "code": {
+                "_type": "number",
+                "_assert": 200
+              },
+              "data": {
+                "finished": {
+                  "_type": "number"
+                }
+              },
+              "message": {
+                "_type": "string"
+              }
+            }
+          ],
+          "failed": []
+        }
+      }
+    }
+  }
+}
